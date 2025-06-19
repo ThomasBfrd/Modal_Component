@@ -1,54 +1,84 @@
-# React + TypeScript + Vite
+# React Modal Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, customizable React modal component built with Typescript
 
-Currently, two official plugins are available:
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Installation
+In your project, just copy and paste this line :
+```
+npm i @thomasbfrd/modal
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Success Modal**: Displays a success message with a single confirmation button
+- **Error Modal**: Shows error messages with a close button
+- **Submit Modal**: Confirmation dialog with both confirm and cancel options
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+
+## Usage
 ```
+type: 'success' | 'error' | 'submit'
+title: string;
+body: string;
+cancelButton?: string;
+okButton: string;
+onCancel?: () => void;
+onOk: () => void;
+```
+
+### Importation : <br>
+```
+import { Modal } from "@thomasbfrd/modal";
+import "@thomasbfrd/modal/dist/modal.css";
+```
+
+```
+Success Modal 
+<Modal 
+    type="success" 
+    title="Success!" 
+    body="Operation completed successfully" 
+    okButton="Close" 
+    onOk={() => {}} 
+/>
+
+Error Modal 
+<Modal 
+    type="error" 
+    title="Error" 
+    body="Something went wrong" 
+    okButton="Close" 
+    onOk={() => {}} 
+/>
+
+Submit Modal (with confirmation) 
+<Modal 
+    type="submit" 
+    title="Confirm" 
+    body="Are you sure?" 
+    okButton="Confirm" 
+    cancelButton="Cancel" 
+    onOk={() => {}} 
+    onCancel={() => {}} 
+/>
+```
+
+### Customization
+```
+:root { 
+    --modal-background-color: #1E293B; 
+    --modal-primary-color: #F8FAFC; 
+    --modal-secondary-color: #1E293B; 
+    --modal-button-primary-color: #1e1e1e; 
+    --modal-button-secondary-color: #1E293B; 
+}
+```
+
+## Demo
+
+![ModalDemo](https://i.postimg.cc/R066D42z/modal-demo.png)
