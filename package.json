@@ -24,7 +24,8 @@
     "prepublishOnly": "npm run build",
     "prepare": "npm run build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:watch": "tsc --watch"
   },
   "peerDependencies": {
     "react": "^19.1.0",
